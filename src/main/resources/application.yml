@@ -1,0 +1,41 @@
+server:
+  port: 8088
+  encoding:
+      charset: UTF-8
+      enabled: true
+      force: true  servlet:    context-path: /
+      
+      
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3305/blog?serverTimezone=Asia/Seoul
+    username: cos
+    password: 1234
+    
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update # create, update, none 
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #모델에서 생성한 변수명 그대로 테이블을 만들때 값을 넣어준다.
+      use-new-id-generator-mappings: false #시퀀스를 어떤 식으로 사용할지 방식을 설정, True = JPA가 사용하는 기본 넘버링 전략을 사용, false = 기본 전략을 사용 안함 
+    show-sql: true #실행되는 쿼리문을 보여줌
+    properties:
+      hibernate.format_sql: true #실행되는 쿼리문의 가독성을 위해 추가
+      
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+  http:
+    encoding:
+      charset: UTF-8 
+      enabled: true
+      force: true
+cos:
+  key: 1234
